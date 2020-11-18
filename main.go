@@ -1,21 +1,3 @@
-// Плагин fluentbit для вывода данных в ElasticSearch.
-// Умеет класть записи в индекс по шаблону на основе данных в записи.
-// Пример шаблона индекса: docker_service-{HOSTNAME}-{CONTAINER_NAME}-{CONTAINER_ID}-{ts#timestamp}
-// Плагин будет искать в записи поля HOSTNAME, CONTAINER_NAME, CONTAINER_ID и ts.
-// Значения этих полей подставит в шаблон. Из ts будет брать год, месяц и день.
-// Пример результата: docker_service-server1-my_service-e21b94731d87-2020.11.18
-//
-// Параметры плагина:
-// Addr     127.0.0.1:9200                    # Адрес эластика.
-// Index    docker-{CONTAINER}-{ts#timestamp} # Шаблон индекса.
-// BulkSize 5000                              # Максимальный размер пачки, отправляемой в эластик.
-// Timeout  300                               # Максимальное время ожидания обработки запроса эластиком (в секундах).
-// Debug    2                                 # Вывод отладочной информации (0-выключен, 1,2 - включен).
-//
-// https://docs.fluentbit.io/manual/development/golang-output-plugins
-// https://github.com/fluent/fluent-bit-go/tree/master/examples/out_multiinstance
-// go build -buildmode=c-shared -o out_goes.so main.go
-
 package main
 
 import "C"
